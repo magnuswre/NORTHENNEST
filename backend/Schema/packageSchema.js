@@ -6,27 +6,10 @@ const packageSchema = new Schema({
   description: String,
   price: Number,
   imageURL: String,
-  
-  //BUDGET
-  breakfeast: String, 
-  wifi: Boolean,
-  ac: Boolean,
-  electricCarCharge: Boolean,
-  privateParking: Boolean,
-  kitchen: Boolean,
-  bedsize: String,
-  towels: String,
-  washingMachine: Boolean,
-  tv: Boolean,
-  petsAllowed: Boolean,
-  //STANDARD
-
-  //DELUXE
-  champagne: Boolean,
-  hottub: Boolean,
-  sauna: Boolean,
-  outdoorKitchen: Boolean,
-  beautyProducts: String
+  // icons: [],
+  budget: {},
+  standard: {},
+  deluxe: {}
 });
 
 module.exports = mongoose.model('Package', packageSchema);

@@ -2,17 +2,17 @@ const Product = require('../Schema/productSchema');
 
 exports.createNewProduct = (req, res) =>{
 
-    const {name, description, price, imageURL} = req.body;
+    const {package, product, name, description, price, imageURL, rating, category, saved } = req.body;
  
-    if(!name || !description || !price || !imageURL){
+    if(!package || !product ||  !name || !description || !price || !imageURL || !rating || !category || !saved){
         res.status(400).json({
-            message: 'You need to enter all the fileds'
+            message: 'You need to enter all the fields'
         })
         return
     }
 
 
-    Product.create({name, description, price, imageURL })
+    Product.create({package, product, name, description, price, imageURL, rating, category, saved})
     .then(data => {
         res.status(201).json(data)
     })

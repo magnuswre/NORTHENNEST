@@ -2,7 +2,7 @@ const Package = require('../Schema/packageSchema');
 
 exports.createNewPackage = (req, res) =>{
 
-const {name, description, price, imageURL} = req.body;
+const {name, description, price, imageURL, budget, standard, deluxe} = req.body;
  
     if(!name || !description || !price || !imageURL){
         res.status(400).json({
@@ -12,7 +12,7 @@ const {name, description, price, imageURL} = req.body;
     }
 
 
-    Package.create({name, description, price, imageURL })
+    Package.create({name, description, price, imageURL, budget, standard, deluxe })
     .then(data => {
         res.status(201).json(data)
     })

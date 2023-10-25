@@ -1,0 +1,65 @@
+.CalenderInputAndLabel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 1px solid;
+    font-size: 20px;
+}
+
+.inputBoxCheckIn-container, .inputBoxCheckOut-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+}
+
+#inputBoxCheckIn, #inputBoxCheckOut{
+    width: 88px;
+    height: 23px;
+    border: none;
+}
+
+  /* #inputBoxCheckOut{
+    width: 88px;
+    height: 23px;
+} */
+
+
+/* .input.inputBoxCheckIn {
+
+    font-size: 25px;
+    padding: 5px 8px 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #666;
+
+}
+
+.input.inputBoxCheckOut{
+    font-size: 22px;
+    padding: 5px 8px 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #666;
+} */
+
+
+.calendarWrap{
+    display: inline-block;
+    position: relative;
+}
+
+.calendarElement{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+    border: 1px solid #ccc;
+    z-index: 999;
+} 
+
+.rdrDateDisplay{
+    display: none !important;
+}
+
+.rdrMonthName{
+    display: none !important;
+}

@@ -1,7 +1,7 @@
 
-const Order = require('../Schema/orderSchema'); // Import your Order model
-const User = require('../Schema/userSchema'); // Import your User model
-const Package = require('../Schema/packageSchema'); // Import your Package model
+const Order = require('../Schema/orderSchema'); 
+const User = require('../Schema/userSchema'); 
+const Package = require('../Schema/packageSchema'); 
 
 exports.createOrder = async (req, res) => {
   try {
@@ -9,10 +9,26 @@ exports.createOrder = async (req, res) => {
 
     const userA = await User.findById(userId);
     const selectedPackage = await Package.findById(package);
+    const randomStr = generateRandomString(10);
 
-    if (!userA || !selectedPackage) {
+    function generateRandomString(length) {
+      const characters = 'abcdefghijklmnopqrstuvwxyz0123456789!?';
+      let randomString = '';
+
+      for (let i = 0; i < length; i++) {
+       const randomIndex = Math.floor(Math.random() * characters.length);
+                 randomString += characters.charAt(randomIndex);
+             }
+         return randomString;
+      }
+
+   if (!userA || !selectedPackage) {
       return res.status(400).json({ error: 'User or package not found' });
     }
+  
+    // if(randomStr){
+    //   return res.status(404).json({ error: 'booking already exists' });
+    // }
 
     const order = new Order({
       userId: userA._id,
@@ -20,7 +36,8 @@ exports.createOrder = async (req, res) => {
       bookingDateArrival,
       bookingDateDeparture,
       guest,
-      status
+      status,
+      bookingReference: randomStr
       // Other order-specific fields
     });
 
