@@ -2,15 +2,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import packageSlice from "../features/_package/packageSlice";
 import packagesSlice from "../features/_package/packagesSlice";
 
-import productSlice from "../features/product/productSlice";
-import productsSlice from "../features/product/productsSlice";
+import rentalObjectSlice from "../features/rentalObject/rentalObjectSlice";
+import rentalObjectsSlice from "../features/rentalObject/rentalObjectsSlice";
 
 export const store = configureStore({
     reducer: {
-      package: packageSlice,
+      _package: packageSlice,
       packages: packagesSlice,
-      product: productSlice,
-      products: productsSlice
+      rentalObject: rentalObjectSlice,
+      rentalObjects: rentalObjectsSlice
 
     }
 })

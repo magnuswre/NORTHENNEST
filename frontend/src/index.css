@@ -3,6 +3,7 @@
   margin: 0;
 }
 
+
 .root{
   /* border: 2px solid; */
   display: flex;
@@ -13,8 +14,11 @@
   --global-color-1:#486349;
   --global-color-2: #CBB26A;
   --global-color-3:#F7F7F7;
+  background-color: lightgray;
+}
 
- 
+.Master-Container{
+   background-color: white;
 }
 
 

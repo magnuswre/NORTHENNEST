@@ -3,7 +3,7 @@ import './Explore.css'
 const Explore = () => {
   return (
     <div className="Home-Explore-Activities" >
-      <p>Explore our Activities</p>
+      <h2>Explore our Activities</h2>
     </div>
   )
 }

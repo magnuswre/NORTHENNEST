@@ -1,13 +1,17 @@
+import './ObjectListingDetails.css'
+
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { RootState } from 'src/app/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductById } from '../../features/product/productSlice';
+import { getRentalObjectById } from '../../features/rentalObject/rentalObjectSlice';
+
+// import Logo from '../../assets/bed.svg'
 
 const ObjectListingDetails = () => {
   const dispatch = useDispatch();
-  const { product, loading, error } = useSelector((state: RootState) => state.product) as {
-    product: { name: string } | null;
+  const { rentalObject, loading, error } = useSelector((state: RootState) => state.rentalObject) as {
+    rentalObject: { name: string, imageURL: string } | null;
     loading: boolean;
     error: string | null;
   };
@@ -16,7 +20,7 @@ const ObjectListingDetails = () => {
   useEffect(() => {
     if (id) {
       const fetchPackageData = async () => {
-        dispatch(getProductById(id) as any); 
+        dispatch(getRentalObjectById(id) as any); 
       };
 
       fetchPackageData();
@@ -33,13 +37,15 @@ const ObjectListingDetails = () => {
 
   return (
     <>
-      <p>hej</p>
       {loading && <p>Loading...</p>}
-      {product && (
+      {rentalObject && (
         <div>
-          <h2>{product.name}</h2>
+          <img className='RentalObject-Details-Image' src={rentalObject.imageURL} alt="" />
         </div>
-      )}
+       )}
+        <div>
+          <h2>Facilities</h2>
+        </div>
     </>
   );
 };

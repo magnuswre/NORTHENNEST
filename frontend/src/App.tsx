@@ -7,6 +7,8 @@ import ObjectListing from './pages/ObjectListing/ObjectListing'
 // import ObjectDetail from './pages/ObjectDetail/ObjectDetail'
 import BookingConfirmation from './pages/BookingConfirmation/BookingConfirmation'
 import ObjectListingDetails from './components/ObjectListingDetails/ObjectListingDetails'
+import PackageCardDetails from './components/Home/PackageCardDetails/PackageCardDetails'
+// import PackageDetails from './pages/PackageDetails/PackageDetails'
 // import PaymentConfirmation from './pages/PaymentConfirmation/PaymentConfirmation'
 
 const App = () => {
@@ -17,10 +19,14 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route index element={<Home />} />
-          <Route path='/products' element={ <ObjectListing /> }/>
-          <Route path='/products/productdetails/:id' element={ <ObjectListingDetails /> }/>
+          <Route path='/rentalobject' element={ <ObjectListing /> }/>
+          <Route path='/rentalobject/rentalobjectdetails/:id' element={ <ObjectListingDetails /> }/>
+
+          {/* <Route path='/package' element={ <PackageDetails /> }/> */}
+
+          <Route path='/package/packagedetails/:id' element={ <PackageCardDetails /> }/>
+
           <Route path='/order/:id' element={ <BookingConfirmation /> }/>
-          {/* <Route path='/products/:id' element={ <PaymentConfirmation /> }/> */}
         </Routes>
         <Footer />
 

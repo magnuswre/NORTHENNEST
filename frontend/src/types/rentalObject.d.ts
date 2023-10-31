@@ -1,4 +1,4 @@
-export interface Product {
+export interface RentalObject {
     _id:         string; 
     name:        string; 
     description: string;

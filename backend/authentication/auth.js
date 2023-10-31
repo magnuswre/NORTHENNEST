@@ -28,7 +28,7 @@ exports.checkAdmin = (req, res, next) => {
     next();
   } else {
     res.status(401).json({
-      message: 'You need to be an admin to see the products',
+      message: 'You need to be an admin to see the rentalObjects',
     });
   }
 };

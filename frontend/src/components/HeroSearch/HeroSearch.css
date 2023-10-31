@@ -2,14 +2,12 @@
 .Home-HeroSearch-container{
    display: grid;
    place-items: center;
-   border: 2px solid gold;
 }
 
 .Home-HeroSearch{
     width: 367px;
     height: 201px;
     flex-shrink: 0;
-    border: 1px solid;
     display: grid;
     place-items: center;
 }

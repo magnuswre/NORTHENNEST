@@ -8,21 +8,24 @@ import AboutOurCabins from '../../components/Home/AboutActivitesBookingInfo/Abou
 import ActivitiesFeatures from '../../components/Home/AboutActivitesBookingInfo/ActivitiesFeatures/ActivitiesFeatures'
 import BookingConfirmationComponent from '../../components/Home/AboutActivitesBookingInfo/BookingConfirmationComponent/BookingConfirmationComponent'
 import Heading4 from '../../components/Home/Heading4/Heading4'
-import StarRating from '../../components/StarRating/StarRating'
+import { MobileCarousel } from '../../components/Home/MobileCarousel/MobileCarousel'
+// import StarRating from '../../components/StarRating/StarRating'
 
 const Home = () => {
   return (
     <div className='Home-Homepage'>
         <HeroSearch />
-        <StarRating />
         <Heading2 />
-        {/* {/* <PackageCard /> */}
-        {/* <PackageCard /> */}
-        <PackageCard /> 
-        <AboutOurCabins />
-        <ActivitiesFeatures />
-        <BookingConfirmationComponent />
+        <div className='Home-Package-Cards'>
+          <PackageCard />
+        </div>
+        <div className='Home-About-Activities-Booking'>
+          <AboutOurCabins />
+          <ActivitiesFeatures />
+          <BookingConfirmationComponent />
+        </div>
         <Explore />
+        <MobileCarousel />
         <Heading4 />
         <ReviewTestimonialCard />
 

@@ -1,11 +1,11 @@
 .Home-PackageCard-container{
+    margin: 0 auto;
     display: grid;
     place-items: center;
-    border: 2px solid blue;
+    text-align: center;
+    
 }
-
-.Home-PackageCard{
-    width: 330px;
-    height: 526px;
-    border: 1px solid; 
+.Home-Package-Images{
+    width: 100%;
+    
 }

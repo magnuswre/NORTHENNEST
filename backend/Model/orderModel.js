@@ -2,13 +2,16 @@
 const Order = require('../Schema/orderSchema'); 
 const User = require('../Schema/userSchema'); 
 const Package = require('../Schema/packageSchema'); 
+// const Product = require('../Schema/productSchema'); 
 
 exports.createOrder = async (req, res) => {
   try {
-    const { userId, package, bookingDateArrival, bookingDateDeparture, guest, status } = req.body;
+    const { userId, rentalObject, package, bookingDateArrival, bookingDateDeparture, guest, status } = req.body;
 
     const userA = await User.findById(userId);
     const selectedPackage = await Package.findById(package);
+    // const productA = await Product.findById(product);
+
     const randomStr = generateRandomString(10);
 
     function generateRandomString(length) {
@@ -33,6 +36,7 @@ exports.createOrder = async (req, res) => {
     const order = new Order({
       userId: userA._id,
       package: selectedPackage._id,
+      rentalObject,
       bookingDateArrival,
       bookingDateDeparture,
       guest,

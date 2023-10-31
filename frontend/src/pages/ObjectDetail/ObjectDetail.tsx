@@ -1,7 +1,9 @@
 
 const ObjectDetail = () => {
   return (
-    <div>ObjectDetail</div>
+    <div>hej
+      
+    </div>
   )
 }
 

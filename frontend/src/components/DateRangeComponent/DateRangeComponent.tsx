@@ -9,9 +9,10 @@ import { addDays } from 'date-fns';
 import format from 'date-fns/format';
 
 const DateRangeComponent = () => {
+  const today = new Date();
   const [range, setRange] = useState([
     {
-      startDate: new Date(),
+      startDate: today,
       endDate: addDays(new Date(), 1),
       key: 'selection',
     },
@@ -95,6 +96,7 @@ const DateRangeComponent = () => {
             months={1}
             direction="horizontal"
             className="calendarElement"
+            minDate={today}
           />
         )}
       </div>

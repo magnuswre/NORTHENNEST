@@ -1,13 +1,10 @@
-
 import './Heading2.css';
 
-
-
 const Heading2 = () => {
- 
-
   return (
-    <div>hejej</div>
+    <div className='Home-Heading2'> 
+      <h2>Tailored Retreats for Every Budget </h2>
+    </div>
 
   );
 };

@@ -9,11 +9,12 @@ const userSchema = mongoose.Schema({
     mobile:          {type: String, required: true},
     email:           {type: String, required: true},
     passwordHash:    {type: String, required: true},
-    // ratings:         {}
-    // Add created at såhär -> underscore created_at
+    rating:          {type: String},
+    review:          {type: String},
+},
+{
+  timestamps: true, 
 })
-
-
 
 const User = mongoose.model('User', userSchema)
 

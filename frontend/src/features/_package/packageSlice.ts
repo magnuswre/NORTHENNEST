@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import postsService from "./packagesService"
 
-
 const initialState = {
-    package: null,
+    _package: null,
     error: null as string | null,
     loading: false
 }
-
 
 export const getPackageById = createAsyncThunk('post/getById', async (packageId: string, thunkAPI) => { 
     try {
@@ -23,7 +21,7 @@ export const packageSlice = createSlice({
     initialState,
     reducers: {
       clearPackage: (state) => {
-        state.package = null
+        state._package = null
       }
     },
     extraReducers: (builder) => { 
@@ -33,12 +31,12 @@ export const packageSlice = createSlice({
           })
           .addCase(getPackageById.fulfilled, (state, action)=> {
             state.loading = false
-            state.package = action.payload
+            state._package = action.payload
             state.error = null
           })
           .addCase(getPackageById.rejected, (state, action) => {
             state.loading = false
-            state.package = null
+            state._package = null
             state.error = action.payload as string | null
           })
 

@@ -18,7 +18,7 @@ const {name, description, price, imageURL, budget, standard, deluxe} = req.body;
     })
     .catch(err =>{
         res.status(500).json({
-         message: 'Something went wrong when creating the product',
+         message: 'Something went wrong when creating the package',
          err: err.message
         })
         return
@@ -55,7 +55,7 @@ exports.uppdatePackage = async (req, res) =>{
     const package = await Package.findByIdAndUpdate(req.params.id, req.body, {new: true})
     
     if(!package){
-      return res.status(404).json({message: 'Could not find the product'})
+      return res.status(404).json({message: 'Could not find the package'})
     }
 
     res.status(200).json(package)
@@ -68,7 +68,7 @@ exports.deletePackage = (req, res) =>{
     Package.findByIdAndDelete(req.params.id)
     .then(package => {
         if(!package){
-           return res.status(404).json({message: 'Could not find the product'})
+           return res.status(404).json({message: 'Could not find the package'})
         }
         res.status(200).json(package)
     })
