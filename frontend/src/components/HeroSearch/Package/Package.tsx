@@ -2,12 +2,11 @@ import chevronBottom from '../../../assets/chevron bottom.svg';
 import './Package.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-
 import { useState, useEffect, useRef } from 'react';
 
 const Package = () => {
   const [open, setOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState('All');
+  const [selectedPackage, setSelectedPackage] = useState('All'); // Initialize with 'All'
   const [inputValues, setInputValues] = useState({
     packages: '',
   });
@@ -36,22 +35,32 @@ const Package = () => {
   };
 
   const handlePackageSelect = (packageType: string) => {
-    setSelectedPackage(packageType);
+    setSelectedPackage(packageType); 
     setOpen(false);
   };
 
+  const handleSearch = () => {
+    if (selectedPackage === 'All') {
+      // Navigate to the ObjectListing page without a specific category
+      window.location.href = '/rentalobject';
+    } else {
+      // Navigate to the ObjectListing page with the selected category as a URL parameter
+      window.location.href = `/rentalobject/${selectedPackage}`;
+    }
+  };
+
   return (
-    <div className="calendarWrap">
-      <div className='CalenderInputAndLabel'>
-        <div className='inputBoxCheckIn-container'>
-          <label htmlFor="inputBoxCheckIn">Package</label>
+    <div className="PackageWrap">
+      <div className='PackageYolo'>
+        <div className='Package-Container'>
+          <label htmlFor="InputPackage">Package</label>
           <div>
             <input
               value={selectedPackage}
               readOnly
-              className="inputBoxCheckIn"
+              className="InputPackage"
               onClick={() => handleOpenClick('packages')}
-              id='inputBoxCheckIn'
+              id='InputPackage'
             />
             <img src={chevronBottom} alt="" />
           </div>
@@ -67,7 +76,9 @@ const Package = () => {
           </>
         )}
       </div>
-      <button>SEARCH</button>
+      <div className='Hero-Home-Search-Btn-Container'>
+        <button className='Hero-Home-Search-Btn' onClick={handleSearch}>SEARCH</button>
+      </div>
     </div>
   );
 };

@@ -1,50 +1,28 @@
-.CalenderInputAndLabel{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.PackageWrap{
+    display: inline-block;
+    position: relative;
+    width: 100%;
     
+}
+.PackageYolo{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
     border: 1px solid;
     font-size: 20px;
 }
 
-.inputBoxCheckIn-container, .inputBoxCheckOut-container{
+.Package-Container{
     display: flex;
     flex-direction: column;
-    border: 1px solid;
-}
-
-#inputBoxCheckIn, #inputBoxCheckOut{
-    width: 88px;
-    height: 23px;
     border: none;
 }
 
-  /* #inputBoxCheckOut{
-    width: 88px;
+#InputPackage{
+    width: 89px;
     height: 23px;
-} */
-
-
-/* .input.inputBoxCheckIn {
-
-    font-size: 25px;
-    padding: 5px 8px 4px 8px;
-    border-radius: 3px;
-    border: 1px solid #666;
-
-}
-
-.input.inputBoxCheckOut{
-    font-size: 22px;
-    padding: 5px 8px 4px 8px;
-    border-radius: 3px;
-    border: 1px solid #666;
-} */
-
-
-.calendarWrap{
-    display: inline-block;
-    position: relative;
+   border: none;
+   color:  #A0A0A0;
 }
 
 .calendarElement{
@@ -62,4 +40,21 @@
 
 .rdrMonthName{
     display: none !important;
+}
+
+.Hero-Home-Search-Btn-Container{
+    display: grid;
+    place-items: center;
+    border: 1px solid;
+}
+
+.Hero-Home-Search-Btn{
+    display: grid;
+    place-items: center;
+    width: 323px;
+    height: 39px;
+    flex-shrink: 0;
+    background-color: #CBB26A;
+    border: none;
+    border-radius: 20px;
 }

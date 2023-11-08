@@ -4,11 +4,17 @@ const API_BASE_URL = 'http://localhost:8080/api/rentalobject/';
 
 // const getAllAsync = async (): RentalObject[] =>  
 
-const getAllAsync = async () => {     
-    const res = await fetch(API_BASE_URL);
-    if (!res.ok) throw new Error('Something went wrong when getting all the rentalObjects');
+// const getAllAsync = async () => {     
+//     const res = await fetch(API_BASE_URL);
+//     if (!res.ok) throw new Error('Something went wrong when getting all the rentalObjects');
+//     return res.json();
+// }
+
+const getAllAsync = async (category: string) => {
+    const res = await fetch(API_BASE_URL + `?category=${category}`);
+    if (!res.ok) throw new Error('Something went wrong when getting rental objects by category');
     return res.json();
-}
+  }
 
 const getByIdAsync = async (rentalObjectId: string) => {
     const res = await fetch(API_BASE_URL + rentalObjectId);

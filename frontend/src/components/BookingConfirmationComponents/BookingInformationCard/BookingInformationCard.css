@@ -1,0 +1,11 @@
+.BookinginformationCard-Container{
+    margin: 0 auto;
+    width: 350px;
+    height: 452px;
+    border: 1px solid;
+}
+
+.Booking-information-Title{
+    background-color: #486349;
+    color: white;
+}

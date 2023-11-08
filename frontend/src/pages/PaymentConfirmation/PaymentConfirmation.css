@@ -1,0 +1,14 @@
+.PaymentConfirmation-Container{
+    margin: 0 auto;
+    width: 350px;
+    height: 306px;
+    background-color: #F0F0F0;
+    text-align: center;
+    margin-bottom: 35px;
+
+}
+.PaymentConfirmation-top-field{
+    height: 35px;
+    background-color: #486349;
+    margin-top: 35px;
+}

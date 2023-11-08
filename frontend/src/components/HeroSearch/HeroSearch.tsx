@@ -1,9 +1,5 @@
-// import CalendarComponent from '../CalendarComponent/CalendarComponent'
 import DateRangeComponent from '../DateRangeComponent/DateRangeComponent'
 import './HeroSearch.css'
-
-// import DatePickerCheckOut from '../DatePicker/DatePickerCheckOut'
-// import DatePickerCheckIn from '../DatePicker/DatePickerCheckin'
 import Package from './Package/Package'
 
 const HeroSearch = () => {
@@ -11,12 +7,9 @@ const HeroSearch = () => {
     <div className='Home-HeroSearch-container'>
       <div className='Home-HeroSearch'>
         <div className='Home-DatePickers'>
-          {/* <DatePickerCheckIn />
-          <DatePickerCheckOut /> */}
-          {/* <CalendarComponent /> */}
           <DateRangeComponent />
         </div>
-        <div>
+        <div className='Home-PackagePicker'>
           <Package />
         </div>
       </div>

@@ -1,4 +1,6 @@
 .Home-ReviewTestimonialCard-Details-Container{
+    font-family: Lora;
+
     margin-top: 30%;
     width: 300px;
     height: 327px;
@@ -19,12 +21,16 @@
     height: 100px;
     border-radius: 50%;
     position: absolute;
-    border: 1px solid;
     top: -50px;
     left: 50%;
     margin-left: -50px;
+    object-fit: cover;
 }
 
 .Home-ReviewTestimonialCard-content{
     margin-top: 75px;
+}
+
+.Home-Review-Name{
+    font-weight: 700;
 }

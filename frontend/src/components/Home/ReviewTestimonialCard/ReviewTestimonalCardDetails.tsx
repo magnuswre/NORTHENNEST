@@ -12,7 +12,7 @@ export const ReviewTestimonalCardDetails = () => {
             <StarRating />
            </div>
           <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quibusdam sed doloribus minima explicabo eum, quos eligendi ea iste eius?
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quibusdam sed doloribus minima explicabo eum, quos eligendi ea iste eius?"
           </p>
         </div>
     </div>

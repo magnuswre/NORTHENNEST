@@ -3,3 +3,24 @@
     height: 242px;
     object-fit: cover;
 }
+.Reservation-Info-Area{
+    height: 115px;
+    /* border: 1px solid; */
+}
+
+.RentalObjectPackage{
+    /* margin: 0 auto; */
+    padding-left: 35px;
+    /* border: 1px solid; */
+    display: flex;
+}
+
+.RentalObjectPackage-ListItem{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+li::marker {
+    color: #396A3C;     
+    font-size: 24px;
+    
+  }
