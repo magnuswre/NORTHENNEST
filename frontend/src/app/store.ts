@@ -8,6 +8,7 @@ import rentalObjectsSlice from "../features/rentalObject/rentalObjectsSlice";
 // import facilitySlice from "../features/facility/facilitySlice"
 import facilitiesSlice from "../features/facility/facilitiesSlice";
 import orderSlice from "../features/order/orderSlice";
+import userSlice from "../features/user/userSlice";
 
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
       rentalObjects: rentalObjectsSlice,
       order: orderSlice,
       // facility: facilitySlice,
-      facilities: facilitiesSlice
+      facilities: facilitiesSlice,
+      user: userSlice
 
 
     }

@@ -3,6 +3,25 @@ require('dotenv').config()
 
 const secretKey = process.env.SECRET_KEY;
 
+exports.generateTokenUser = (user) => {
+    return jwt.sign({_id: user._id, displayName: user.displayName}, secretKey, {expiresIn: '1d'})
+}
+
+exports.verifyTokenUser = (req, res, next) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        console.log("auth.js", token); // Log the token for debugging
+        req.userId = jwt.verify(token, secretKey)._id;
+        next();
+    } catch (error) {
+        console.error('Error verifying user token:', error.message);
+        return res.status(401).json({
+            message: 'Unauthorized. Please log in.',
+        });
+    }
+
+
+    
 exports.generateTokenAdmin = (admin) => {
     return jwt.sign({_id: admin._id, displayName: admin.displayName}, secretKey, {expiresIn: '1d'})
 }
@@ -36,33 +55,6 @@ exports.checkAdmin = (req, res, next) => {
 // USER
 
 
-exports.generateTokenUser = (user) => {
-    return jwt.sign({_id: user._id, displayName: user.displayName}, secretKey, {expiresIn: '1d'})
-}
-
-exports.verifyTokenUser = (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(' ')[1];
-        req.userId = jwt.verify(token, secretKey)._id
-        next()
-    } catch {
-        return res.status(401).json({
-            message: 'Admin access required'
-        })
-    }
-}
-
-exports.verifyTokenUser = (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(' ')[1];
-        req.userId = jwt.verify(token, secretKey)._id
-        next()
-    } catch {
-        return res.status(401).json({
-            message: 'Admin access required'
-        })
-        
-    }
 }
 
 // mwdev81@gmail.com - password: Bytmig123

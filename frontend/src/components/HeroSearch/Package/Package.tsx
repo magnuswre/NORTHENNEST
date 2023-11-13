@@ -35,7 +35,7 @@ const Package = () => {
   };
 
   const handlePackageSelect = (packageType: string) => {
-    setSelectedPackage(packageType); 
+    setSelectedPackage(packageType);
     setOpen(false);
   };
 
@@ -51,28 +51,28 @@ const Package = () => {
 
   return (
     <div className="PackageWrap">
-      <div className='PackageYolo'>
-        <div className='Package-Container'>
-          <label htmlFor="InputPackage">Package</label>
-          <div>
-            <input
-              value={selectedPackage}
-              readOnly
-              className="InputPackage"
-              onClick={() => handleOpenClick('packages')}
-              id='InputPackage'
-            />
-            <img src={chevronBottom} alt="" />
-          </div>
+      <div className='Package-Container'>
+        <label htmlFor="InputPackage">Package</label>
+        <div>
+          <input
+            value={selectedPackage}
+            readOnly
+            className="InputPackage"
+            onClick={() => handleOpenClick('packages')}
+            id='InputPackage'
+          />
+          {/* <img src={chevronBottom} alt="" /> */}
         </div>
       </div>
-      <div ref={refOne}>
+      <div ref={refOne} className='Drop-Down-Packages-Content-Wrapper'>
         {open && (
           <>
-            <p onClick={() => handlePackageSelect('All')}>All</p>
-            <p onClick={() => handlePackageSelect('Budget')}>Budget</p>
-            <p onClick={() => handlePackageSelect('Standard')}>Standard</p>
-            <p onClick={() => handlePackageSelect('Deluxe')}>Deluxe</p>
+          <div className='Drop-Down-Packages-Content'>
+            <p className='Drop-Down-Packages-Item Packages-Item-Border' onClick={() => handlePackageSelect('All')}>All</p>
+            <p className='Drop-Down-Packages-Item Packages-Item-Border' onClick={() => handlePackageSelect('Budget')}>Budget</p>
+            <p className='Drop-Down-Packages-Item Packages-Item-Border' onClick={() => handlePackageSelect('Standard')}>Standard</p>
+            <p className='Drop-Down-Packages-Item' onClick={() => handlePackageSelect('Deluxe')}>Deluxe</p>
+            </div>
           </>
         )}
       </div>

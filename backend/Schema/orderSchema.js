@@ -11,38 +11,46 @@ const orderSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'RentalObject'
     },
-    price: {
-      type: Number
-    },
     bookingDateArrival: {
       type: Date
     },
     bookingDateDeparture: {
       type: Date
     },
-    guest: {
+    price: {
       type: Number
     },
-    status: {
-      type: String,
-      default: 'pending'
+    email: {
+      type: String
+    },
+    phoneNumber: {
+      type: String
+    },
+    guest: {
+      type: Number,
+      default: 2
     },
     bookingReference: {
       type: String
     },
     paymentMethod: {
-      type: String
+      type: String,
+      required: true
     },
     cancellationProtection: {
       type: String
     },
     message: {
       type: String
-    }
+    },
+    status: {
+      type: String,
+      default: 'pending'
+    },
   },
   {
     timestamps: true
   }
-);
-
+  );
+  
 module.exports = mongoose.model('Order', orderSchema);

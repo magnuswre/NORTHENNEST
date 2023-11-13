@@ -1,38 +1,61 @@
 .PackageWrap{
     display: inline-block;
-    position: relative;
     width: 100%;
-    
 }
-.PackageYolo{
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    border: 1px solid;
+
+label{
     font-size: 20px;
 }
 
 .Package-Container{
+    position: relative;
     display: flex;
     flex-direction: column;
-    border: none;
+    height: 50px;
+    width: 323px;
+    margin: 0 auto;
 }
 
 #InputPackage{
     width: 89px;
     height: 23px;
-   border: none;
-   color:  #A0A0A0;
+    border: none;
+    position: absolute;
+    outline: none;
+    color:  #A0A0A0;
 }
 
-.calendarElement{
+.Drop-Down-Packages-Content-Wrapper{
+    position: relative;
+}
+
+.Drop-Down-Packages-Content{
+    
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 150px;
-    border: 1px solid #ccc;
-    z-index: 999;
-} 
+    top: 65px;
+    width: 100%;
+    text-align: center;
+    border-radius: 15px;
+    background-color: #F1F1F1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    
+}
+
+.Drop-Down-Packages-Item{
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.Packages-Item-Border{
+    border-bottom: 1px solid #BFBFBF;
+}
+
+.Drop-Down-Packages-Item:hover{
+    background-color: #555555;
+    color: #FFF;
+}
 
 .rdrDateDisplay{
     display: none !important;
@@ -45,7 +68,6 @@
 .Hero-Home-Search-Btn-Container{
     display: grid;
     place-items: center;
-    border: 1px solid;
 }
 
 .Hero-Home-Search-Btn{
@@ -57,4 +79,6 @@
     background-color: #CBB26A;
     border: none;
     border-radius: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
 }

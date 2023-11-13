@@ -5,7 +5,4 @@ router.post('/register', adminModel.createNewAdmin)
 router.post('/login', adminModel.loginAdmin)
 router.get('/:id', adminModel.getAdminById)
 
-
-
-
 module.exports = router;

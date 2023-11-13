@@ -1,16 +1,17 @@
-
 const Order = require('../Schema/orderSchema'); 
-const User = require('../Schema/userSchema'); 
-const Package = require('../Schema/packageSchema'); 
-// const Product = require('../Schema/productSchema'); 
+// const User = require('../Schema/userSchema'); 
 
 exports.createOrder = async (req, res) => {
   try {
-    const { userId, rentalObject, package, bookingDateArrival, bookingDateDeparture, guest, status } = req.body;
-
-    const userA = await User.findById(userId);
-    const selectedPackage = await Package.findById(package);
-    // const productA = await Product.findById(product);
+    const { userId, rentalObject, bookingDateArrival, bookingDateDeparture, price, email, phoneNumber, guest, paymentMethod, status } = req.body;
+ 
+    console.log(req.body)
+    if (!rentalObject || !price || !phoneNumber || !paymentMethod || !email || !bookingDateArrival || !bookingDateDeparture || !status || !guest) {
+      res.status(400).json({
+          message: 'You need to enter all the fields'
+      });
+      return;
+  }
 
     const randomStr = generateRandomString(10);
 
@@ -25,29 +26,28 @@ exports.createOrder = async (req, res) => {
          return randomString;
       }
 
-   if (!userA || !selectedPackage) {
-      return res.status(400).json({ error: 'User or package not found' });
-    }
-  
-    // if(randomStr){
-    //   return res.status(404).json({ error: 'booking already exists' });
-    // }
+
+     
 
     const order = new Order({
-      userId: userA._id,
-      package: selectedPackage._id,
+      userId,
       rentalObject,
       bookingDateArrival,
       bookingDateDeparture,
+      price,
       guest,
-      status,
-      bookingReference: randomStr
-      // Other order-specific fields
+      paymentMethod,
+      bookingReference: randomStr,
+      email,
+      phoneNumber,
+      status
     });
 
-    await order.save();
-
-    return res.status(200).json({ message: 'Order created successfully' });
+    const savedOrder = await order.save();
+    const responseObject = { order: savedOrder, message: 'Order created successfully' };
+    console.log('Response Object:', responseObject);
+     // Instead of just sending a success message, send the order's _id back
+     return res.status(200).json(responseObject);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: 'Internal server error' });
@@ -56,47 +56,27 @@ exports.createOrder = async (req, res) => {
 
 
 
-// const Order = require('../Schema/orderSchema')
+exports.getOrderById = async (req, res) => {
+  try {
+    // Assuming the order's ID is passed as a URL parameter named 'id'
+    const orderId = req.params.id;
 
-// // CREATE
+    // Use the findById method provided by Mongoose to find the order by its ID
+    const order = await Order.findById(orderId);
 
-// exports.createNewOrder = async (req, res) => {
-//     const { orderRows, status } = req.body
+    // If no order is found, send a 404 response
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
 
-//     if(!orderRows) {
-//         return res.status(400).json({
-//             message: "you need to enter all the fields"
-//         })
-//     }
-//     try {
-//         const data = await Order.create({
-//             orderRows,
-//             userId: req.userId,
-//             status
-
-//         })
-//       res.status(201).json({ userId: data.userId })
-
-
-
-//     } catch (err) {
-//         return res.status(500).json({
-//             message: "something went wrong when createing the order",
-//             err: err.message,
-//         })
-//     }
-// }
-
-// // exports.getMyOrder = async (req, res) => {
-
-// //     const orders = await Order.find({userId: req.userId})
-
-// //     if(!orders){
-// //         return res.status(404).json({message: 'Could not fint the orders'})
-// //     }
-
-// //     res.status(200).json(orders)
-// // }
+    // If the order is found, send it back in the response
+    res.status(200).json(order);
+  } catch (err) {
+    console.error(err);
+    // If there is an error (e.g., if the ID is not a valid format), send a 500 response
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 
 // exports.getOrders = async (req, res) =>{

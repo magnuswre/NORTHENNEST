@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
@@ -8,6 +8,11 @@ import BookingConfirmation from './pages/BookingConfirmation/BookingConfirmation
 import PackageCardDetails from './components/Home/PackageCardDetails/PackageCardDetails'
 import PaymentConfirmation from './pages/PaymentConfirmation/PaymentConfirmation'
 import ObjectListingDetails from './components/ObjectListingDetails/ObjectListingDetails'
+import Login from './pages/User/Login'
+import Registration from './pages/User/Registration'
+import BookingAlterative from './pages/BookingAlternative/BookingAlterative'
+import UserProfile from './pages/User/UserProfile'
+import Test from './pages/User/Test'
 
 const App = () => {
   return (
@@ -19,7 +24,14 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/rentalobject" element={<ObjectListing />} />
             <Route path="/rentalobject/:category" element={<ObjectListing />} />
-            <Route path="rentalobjectdetails/:id" element={<ObjectListingDetails />} />
+            <Route path="/rentalobjectdetails/:id" element={<ObjectListingDetails />} />
+            <Route path="/bookingalternative/:id" element={<BookingAlterative />} />
+            <Route path='/register' element={<Registration />}/>
+            <Route path='/login' element={<Login />} />
+            <Route path='/profile' element={<UserProfile />} />
+            <Route path='/test' element={<Test />} />
+
+
             <Route path="/packagedetails/:id" element={<PackageCardDetails />} />
             <Route path="/order/:id" element={<BookingConfirmation />} />
             <Route path="/paymentconfirmation/:id" element={<PaymentConfirmation />} />

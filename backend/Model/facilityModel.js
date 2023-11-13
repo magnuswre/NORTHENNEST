@@ -1,10 +1,10 @@
-const Facilities = require('../Schema/facilitiesSchema');
+const Facility = require('../Schema/facilitySchema');
 
 exports.createNewFacility = (req, res) =>{
 
-const {text, icon} = req.body;
+const {text} = req.body;
  
-    if(!text || !icon){
+    if(!text){
         res.status(400).json({
             message: 'You need to enter all the fields, all of them'
         })
@@ -12,7 +12,7 @@ const {text, icon} = req.body;
     }
 
 
-    Facilities.create({ text, icon })
+    Facility.create({ text })
     .then(data => {
         res.status(201).json(data)
     })
@@ -30,7 +30,7 @@ exports.getAllFacilities = async (req, res) =>{
     // const limit = parseInt(req.query.limit)
 
     try {
-        const facility = await Facilities.find()
+        const facility = await Facility.find()
         res.status(200).json(facility)
         
     } catch (err) {
@@ -41,7 +41,7 @@ exports.getAllFacilities = async (req, res) =>{
 
 exports.getFacilityById = async (req, res) =>{
 
-    const facility = await Facilities.findById(req.params.id)
+    const facility = await Facility.findById(req.params.id)
     
     if(!facility){
         return res.status(404).json({message: 'Could not find the facility'})
@@ -52,7 +52,7 @@ exports.getFacilityById = async (req, res) =>{
 }
 
 exports.uppdateFacility = async (req, res) =>{
-    const facility = await Facilities.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const facility = await Facility.findByIdAndUpdate(req.params.id, req.body, {new: true})
     
     if(!facility){
       return res.status(404).json({message: 'Could not find the facility'})
@@ -65,7 +65,7 @@ exports.uppdateFacility = async (req, res) =>{
 
 exports.deleteFacility = (req, res) =>{
 
-    Facilities.findByIdAndDelete(req.params.id)
+    Facility.findByIdAndDelete(req.params.id)
     .then(facility => {
         if(!facility){
            return res.status(404).json({message: 'Could not find the facility'})

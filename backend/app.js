@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 
-app.use('/api/facility', require('./controllers/rentalObjectControl'))
+app.use('/api/facility', require('./controllers/facilityControl'))
 app.use('/api/package', require('./controllers/packageControl'))
 app.use('/api/rentalobject', require('./controllers/rentalObjectControl'))
 app.use('/api/user', require('./controllers/userControl'))

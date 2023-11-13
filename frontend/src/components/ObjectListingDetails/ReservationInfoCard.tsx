@@ -1,3 +1,4 @@
+// import { Link } from 'react-router-dom';
 import './ReservationCard.css';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -18,7 +19,8 @@ const ReservationInfoCard = () => {
   const { id } = useParams();
 
   const handleReserveClick = () => {
-    navigate(`/order/${id}`);
+    navigate(`/bookingalternative/${id}`)
+    // navigate(`/order/${id}`);
     localStorage.setItem('totalPrice', totalCost.toString());
   };
 
@@ -35,6 +37,8 @@ const ReservationInfoCard = () => {
         <div>
           <p className="ReservationInfoCard-Price">{totalCost} SEK</p>
         </div>
+        {/* <Link to="/login">Already Have an Account? 
+        </Link> */}
         <button className="ReservationInfoCard-Btn" onClick={handleReserveClick}>Reserve</button>
       </div>
     </div>

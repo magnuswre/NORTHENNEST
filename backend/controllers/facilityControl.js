@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const facilitiesModel = require('../Model/facilitiesModel')
+const facilityModel = require('../Model/facilityModel')
 const auth = require('../authentication/auth')
 
-router.post('/add', facilitiesModel.createNewFacility)
-router.get('/', facilitiesModel.getAllFacilities)
-router.get('/:id', facilitiesModel.getFacilityById)
-router.put('/:id', facilitiesModel.uppdateFacility)
-router.delete('/:id', facilitiesModel.deleteFacility)
+router.post('/add', facilityModel.createNewFacility)
+router.get('/', facilityModel.getAllFacilities)
+router.get('/:id', facilityModel.getFacilityById)
+router.put('/:id', facilityModel.uppdateFacility)
+router.delete('/:id', facilityModel.deleteFacility)
 
 
 // router.post('/add', auth.verifyTokenAdmin, packageModel.createNewPackage)

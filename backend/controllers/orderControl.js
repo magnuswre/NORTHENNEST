@@ -3,6 +3,7 @@ const { getOrders, createOrder, updateStatus, getOrderById } = require('../Model
 const auth = require('../authentication/auth')
 
 router.post('/add', createOrder)
+router.get('/:id', getOrderById)
 
 // router.get('/allOrders', getOrders )
 // router.get('/:id', auth.verifyTokenAdmin, getOrderById)

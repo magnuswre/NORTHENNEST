@@ -100,51 +100,49 @@ const DateRangeComponent = () => {
 
   return (
     <div className="calendarWrap">
-      <div className='CalenderInputAndLabel'>
+      <div className='CalenderInputAndLabel-Content'>
+        <div className='CalenderInputAndLabel'>
+          <div className='inputBoxCheckIn-container'>
+            <div className='inputBoxCheckIn-Label'>
+              <label htmlFor="inputBoxCheckIn">Check in</label>
+            </div>
 
-        
-        <div className='inputBoxCheckIn-container'>
-          <div className='inputBoxCheckIn-Label'>
-            <label htmlFor="inputBoxCheckIn">Check in</label>
+            <div className='inputBoxes-InputAndBtn'>
+              <div>
+                <input
+                  value={inputValues.checkIn || 'When?'}
+                  readOnly
+                  className="inputBoxCheckIn"
+                  onClick={() => handleOpenClick('checkIn')}
+                  id='inputBoxCheckIn'
+                />
+              </div>
+              <div>
+                {/* <div className='Calender-Chevron-Btn' > */}
+                <img className='Calender-Chevron-Btn' src={chevronBottom} alt="" />
+                {/* </div> */}
+              </div>
+            </div>
           </div>
 
-          <div className='inputBoxes-InputAndBtn'>
-            <div>
-              <input
-                value={inputValues.checkIn || 'When?'}
-                readOnly
-                className="inputBoxCheckIn"
-                onClick={() => handleOpenClick('checkIn')}
-                id='inputBoxCheckIn'
-              />
+          <div className='inputBoxCheckOut-container'>
+            <div className='inputBoxCheckOut-Label'>
+              <label htmlFor="inputBoxCheckOut">Check out</label>
             </div>
-            <div>
-              {/* <div className='Calender-Chevron-Btn' > */}
-              <img className='Calender-Chevron-Btn' src={chevronBottom} alt="" />
-              {/* </div> */}
-            </div>
-          </div>
-        </div>
 
-      
-
-        <div className='inputBoxCheckOut-container'>
-          <div className='inputBoxCheckOut-Label'>
-            <label htmlFor="inputBoxCheckOut">Check out</label>
-          </div>
-
-          <div className='inputBoxes-InputAndBtn'>
-            <div>
-              <input
-                value={inputValues.checkOut || 'When?'}
-                readOnly
-                className="inputBoxCheckOut"
-                onClick={() => handleOpenClick('checkOut')}
-                id='inputBoxCheckOut'
-              />
-            </div>
-            <div>
-              <img src={chevronBottom} alt="" />
+            <div className='inputBoxes-InputAndBtn'>
+              <div>
+                <input
+                  value={inputValues.checkOut || 'When?'}
+                  readOnly
+                  className="inputBoxCheckOut"
+                  onClick={() => handleOpenClick('checkOut')}
+                  id='inputBoxCheckOut'
+                />
+              </div>
+              <div>
+                <img src={chevronBottom} alt="" />
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 .calendarWrap{
-  
+    
     display: inline-block;
     position: relative;
     width: 100%;
@@ -7,12 +7,19 @@
     margin-top: 14px;
     
 }
-.CalenderInputAndLabel{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+
+.CalenderInputAndLabel-Content{
     border-bottom: 1px solid #D1D1D1;
     border-top: 1px solid #D1D1D1;
+    /* border-right: 1px solid; */
+}
+.CalenderInputAndLabel{
+    margin: 0 auto;
+    width: 323px;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
     font-size: 20px;
 }
 
@@ -20,11 +27,13 @@
     display: flex;
     padding: 1%;
     flex-direction: column;
-    width: 30%;
     align-items: start;
     justify-content: center;
     border: none;
     
+}
+.inputBoxCheckIn-container{
+    border-right: 1px solid #D1D1D1;
 }
 
 .Empty-Div-With-Border{
@@ -48,6 +57,7 @@
     border: none;
     color:  #A0A0A0;
     width: 50%;
+    outline: none;
 }
 
 .calendarElement{
