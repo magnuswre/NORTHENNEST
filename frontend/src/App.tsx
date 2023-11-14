@@ -12,7 +12,6 @@ import Login from './pages/User/Login'
 import Registration from './pages/User/Registration'
 import BookingAlterative from './pages/BookingAlternative/BookingAlterative'
 import UserProfile from './pages/User/UserProfile'
-import Test from './pages/User/Test'
 
 const App = () => {
   return (
@@ -29,8 +28,6 @@ const App = () => {
             <Route path='/register' element={<Registration />}/>
             <Route path='/login' element={<Login />} />
             <Route path='/profile' element={<UserProfile />} />
-            <Route path='/test' element={<Test />} />
-
 
             <Route path="/packagedetails/:id" element={<PackageCardDetails />} />
             <Route path="/order/:id" element={<BookingConfirmation />} />

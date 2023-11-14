@@ -6,7 +6,7 @@ const BookingInformationCard = () => {
   const checkOutDate = localStorage.getItem('checkOut');
   const totalPrice = localStorage.getItem('totalPrice');
 
-  console.log(totalPrice)
+  // console.log(totalPrice)
 
   const [isCancellationProtectionSelected, setIsCancellationProtectionSelected] = useState(false);
   const cancellationProtectionCost = 500; // This can be a fixed value or fetched from elsewhere
@@ -24,6 +24,8 @@ const BookingInformationCard = () => {
   useEffect(() => {
     localStorage.setItem('totalPriceWithProtection', totalCost.toString());
   }, [totalCost]);
+
+  console.log(totalCost)
   
   return (
     <div className='BookinginformationCard-Container'>

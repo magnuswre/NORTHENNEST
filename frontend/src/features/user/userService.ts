@@ -5,10 +5,10 @@ export const getUserProfile = async () => {
       const token = localStorage.getItem('user-token');
       console.log("userService getUserProfile,", token)
       const response = await fetch(`${API_BASE_URL}profile`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `bearer ${token}`,
         },
       });
       if (!response.ok) {
