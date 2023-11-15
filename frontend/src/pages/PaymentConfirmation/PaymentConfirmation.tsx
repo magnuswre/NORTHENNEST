@@ -8,12 +8,12 @@ import { RootState } from 'src/app/store';
 
 const PaymentConfirmation = () => {
   const dispatch = useDispatch();
-  const { orderId } = useParams(); 
-  const order = useSelector((state: RootState) => state.order.order); 
+  const { orderId } = useParams();
+  const order = useSelector((state: RootState) => state.order.order);
 
   useEffect(() => {
     if (orderId) {
-      dispatch(getRentalObjectById(orderId));
+      dispatch(getRentalObjectById(orderId) as any);
     }
   }, [orderId, dispatch]);
 
@@ -24,14 +24,22 @@ const PaymentConfirmation = () => {
   return (
     <div className='PaymentConfirmation-Container'>
       <div className='PaymentConfirmation-top-field'></div>
-      <img src={check} alt="Checkmark" />
-      <h3>THANK YOU FOR YOUR PAYMENT!</h3>
-      <p>Total amount:</p>
-      <p>{totalAmount} SEK</p>
-      <p>Your booking reference:</p>
-      <p>{bookingReference}</p>
-      <p>A receipt and booking confirmation for this order has been sent to this email:</p>
-      <p>{email}</p>
+      <div className='PaymentConfirmation-Content'>
+        <img className='PaymentConfirmation-Checkicon' src={check} alt="Checkmark" />
+        <p className='Bold'>THANK YOU FOR YOUR PAYMENT!</p>
+        <div className='PaymentConfirmation-Amount-Container'>
+          <p>Total amount:</p>
+          <p className='Bold'>{totalAmount} SEK</p>
+        </div>
+        <div className='PaymentConfirmation-Booking-Reference-Container'>
+          <p>Your booking reference:</p>
+          <p className='Bold'>{bookingReference}</p>
+        </div>
+        <div className='PaymentConfirmation-Email-Container'>
+          <p>A receipt and booking confirmation for this order has been sent to this email:</p>
+          <p className='Bold'>{email}</p>
+        </div>
+      </div>
     </div>
   );
 };

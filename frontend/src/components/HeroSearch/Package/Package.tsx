@@ -52,7 +52,7 @@ const Package = () => {
   return (
     <div className="PackageWrap">
       <div className='Package-Container'>
-        <label htmlFor="InputPackage">Package</label>
+        <label className="PackageLabel" htmlFor="InputPackage">Package</label>
         <div>
           <input
             value={selectedPackage}

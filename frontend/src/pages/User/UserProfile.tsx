@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import userService from '../../features/user/userService';
 import BookingFormLoggedInComponent from '../../components/BookingConfirmationComponents/BookingForm/BookingFormLoggedInComponent';
+import BookingInformationCard from '../../components/BookingConfirmationComponents/BookingInformationCard/BookingInformationCard';
 
 const UserProfile = () => {
  
@@ -39,6 +40,7 @@ const UserProfile = () => {
             <p>User ID: {userData._id}</p>
             <p>Email: {userData.email}</p>
             <p>Email: {userData.mobile}</p>
+            <BookingInformationCard />
             <BookingFormLoggedInComponent userData={userData}/>
             {/* Add more fields as needed */}
           </div>

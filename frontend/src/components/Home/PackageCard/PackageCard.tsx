@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPackages } from '../../../features/_package/packagesSlice';
 import bedIcon from '../../../assets/bed.svg'
-import WifiIcon from '../../../assets/Wifi.svg'
-import petsa from '../../../assets/lounge.svg'
+import WifiIcon from '../../../assets/facilitiesIcons/Wifi.svg'
+import petsa from '../../../assets/facilitiesIcons/lounge.svg'
 
 const PackageCard = () => {
   const { packages, loading, error } = useSelector((state: RootState) => state.packages);

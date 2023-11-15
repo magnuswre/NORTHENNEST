@@ -1,6 +1,7 @@
 // import { Link } from 'react-router-dom';
 import './ReservationCard.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import personIcon from '../../assets/reservationinfocardsymbol.svg'
 
 const ReservationInfoCard = () => {
   const checkInDate = localStorage.getItem('checkIn');
@@ -28,7 +29,7 @@ const ReservationInfoCard = () => {
   return (
     <div className="ReservationInfoCard-Container">
       <div className="ReservationInfoCard-Details">
-        <p className='smalltext'>1 bedroom 2xP</p>
+        <p className='smalltext'>1 bedroom 2x<span><img src={personIcon} alt="" /></span></p>
         <p className='smalltext'>Check in: {checkInDate || 'Not selected'}</p>
         <p className='smalltext'>Check out: {checkOutDate || 'Not selected'}</p> 
       </div>

@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import packageSlice from "../features/_package/packageSlice";
 import packagesSlice from "../features/_package/packagesSlice";
-
 import rentalObjectSlice from "../features/rentalObject/rentalObjectSlice";
 import rentalObjectsSlice from "../features/rentalObject/rentalObjectsSlice";
-
-// import facilitySlice from "../features/facility/facilitySlice"
 import facilitiesSlice from "../features/facility/facilitiesSlice";
 import orderSlice from "../features/order/orderSlice";
 import userSlice from "../features/user/userSlice";
-
 
 export const store = configureStore({
     reducer: {
@@ -18,11 +14,8 @@ export const store = configureStore({
       rentalObject: rentalObjectSlice,
       rentalObjects: rentalObjectsSlice,
       order: orderSlice,
-      // facility: facilitySlice,
       facilities: facilitiesSlice,
       user: userSlice
-
-
     }
 })
 

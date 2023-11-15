@@ -1,9 +1,16 @@
+
 import { useDispatch } from 'react-redux';
 import './BookingFormComponent.css'
 import { checkIfEmpty } from './Validation';
 import { useState } from 'react';
 import { createOrder } from '../../../features/order/orderSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import visamastercardImage from '../../../assets/visamastercard.png';
+import klarnaImage from '../../../assets/klarna.png';
+import paypalImage from '../../../assets/paypal.png';
+import americanExpressImage from '../../../assets/americanexpress.png';
+
 
 const initState = {
   fullName: '',
@@ -16,14 +23,14 @@ const initState = {
 };
 
 const BookingFormComponent = () => {
-  const navigate = useNavigate()
-  const { id } = useParams<{ id: string }>();
-  console.log(id)
-  const checkOut = localStorage.getItem('checkOut')
-  const totalPriceWithProtection = localStorage.getItem('totalPriceWithProtection')
-  const checkIn = localStorage.getItem('checkIn')
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>();
+  const checkIn = localStorage.getItem('checkIn')
+  const checkOut = localStorage.getItem('checkOut')
+  const totalPriceWithProtection = localStorage.getItem('totalPriceWithProtection')
+
 
   const [formData, setFormData] = useState(initState);
 
@@ -89,70 +96,67 @@ const BookingFormComponent = () => {
       }));
     }
 
-   // Convert totalPriceWithProtection to a number, providing a fallback of 0
-  const priceValue = parseFloat(totalPriceWithProtection ?? '0');
+    // Convert totalPriceWithProtection to a number, providing a fallback of 0
+    const priceValue = parseFloat(totalPriceWithProtection ?? '0');
 
-  if (!isNaN(priceValue) && id) { // Check if priceValue is a number and id is not undefined
-    const orderData = {
-      rentalObject: id,
-      bookingDateArrival: checkIn ?? new Date().toISOString(), // Provide a default value if null
-      bookingDateDeparture: checkOut ?? new Date().toISOString(), // Provide a default value if null
-      price: priceValue, // Use the parsed price value
-      email: formData.email,
-      phoneNumber: formData.phoneNumber,
-      streetAddress: formData.streetAddress,
-      stateProvince: formData.stateProvince,
-      city: formData.city,
-      paymentMethod: formData.paymentMethod,
-      status: 'pending',
-      guest: 2
-    };
-    console.log(orderData)
-    // Dispatch the action and handle the promise
-    const resultAction = await dispatch(createOrder(orderData));
+    if (!isNaN(priceValue) && id) { // Check if priceValue is a number and id is not undefined
+      const orderData = {
+        rentalObject: id,
+        bookingDateArrival: checkIn ?? new Date().toISOString(), // Provide a default value if null
+        bookingDateDeparture: checkOut ?? new Date().toISOString(), // Provide a default value if null
+        price: priceValue, // Use the parsed price value
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        // streetAddress: formData.streetAddress,
+        // stateProvince: formData.stateProvince,
+        // city: formData.city,
+        paymentMethod: formData.paymentMethod,
+        status: 'pending',
+        guest: 2
+      };
 
-    // Check if the action is fulfilled and payload is structured as expected
-    if (createOrder.fulfilled.match(resultAction)) {
-      // Check if the payload contains 'order' and '_id' is defined
-      if (resultAction.payload && 'order' in resultAction.payload && '_id' in resultAction.payload.order) {
-        const newOrderId = resultAction.payload.order._id; // Extract the _id
-        navigate(`/paymentconfirmation/${newOrderId}`); // Navigate using the _id
+
+      const resultAction = await dispatch(createOrder(orderData) as any);
+
+      if (createOrder.fulfilled.match(resultAction)) {
+        if (resultAction.payload && 'order' in resultAction.payload && '_id' in resultAction.payload.order) {
+          const newOrderId = resultAction.payload.order._id;
+          navigate(`/paymentconfirmation/${newOrderId}`);
+        } else {
+          console.error('Order ID was not present in the response payload.');
+        }
       } else {
-        console.error('Order ID was not present in the response payload.');
+        console.error('Order creation failed.', resultAction.error);
       }
     } else {
-      console.error('Order creation failed.', resultAction.error);
+      console.error('Total price is not a valid number or rental object ID is missing.');
     }
-  } else {
-    console.error('Total price is not a valid number or rental object ID is missing.');
-  }
-};
+  };
 
-  // 
 
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="fullName"><h3> Full Name:</h3> </label>
+          <label htmlFor="fullName"><h4> Full Name:</h4> </label>
           <input type="text" name="fullName" className="input" id="fullName" value={formData.fullName} onChange={handleChangeInput} />
           <p className="error-text">{error.fullName}</p>
         </div>
 
         <div className="form-group">
-          <label htmlFor="email"><h3> Email:</h3> </label>
+          <label htmlFor="email"><h4> Email:</h4> </label>
           <input type="text" name="email" className="input" id="email" value={formData.email} onChange={handleChangeInput} />
           <p className="error-text">{error.email}</p>
         </div>
 
         <div className="form-group">
-          <label htmlFor="phoneNumber"><h3>Phone Number:</h3> </label>
+          <label htmlFor="phoneNumber"><h4>Phone Number:</h4> </label>
           <input type="number" name="phoneNumber" className="input" id="phoneNumber" value={formData.phoneNumber} onChange={handleChangeInput} />
           <p className="error-text">{error.phoneNumber}</p>
         </div>
 
         <div className="form-group">
-          <label htmlFor="streetAddress"><h3>Address:</h3> </label>
+          <label htmlFor="streetAddress"><h4>Address:</h4> </label>
           <input
             type="text"
             name="streetAddress"
@@ -160,7 +164,7 @@ const BookingFormComponent = () => {
             id="streetAddress"
             value={formData.streetAddress}
             onChange={handleChangeInput}
-            placeholder="Enter your street address"
+            placeholder="Street address"
           />
           <p className="error-text">{error.streetAddress}</p>
         </div>
@@ -174,7 +178,7 @@ const BookingFormComponent = () => {
             id="stateProvince"
             value={formData.stateProvince}
             onChange={handleChangeInput}
-            placeholder="Enter your state or province"
+            placeholder="State or province"
           />
           <p className="error-text">{error.stateProvince}</p>
         </div>
@@ -188,64 +192,70 @@ const BookingFormComponent = () => {
             id="city"
             value={formData.city}
             onChange={handleChangeInput}
-            placeholder="Enter your city"
+            placeholder="City"
           />
           <p className="error-text">{error.city}</p>
         </div>
-        <div className='Payment-Methods'>
-          <div className='visaMastercard'>
-            <p>Visa/Mastercard</p>
-            <input
-              type="radio"
-              name="paymentMethod"
-              id="visaMastercard"
-              value="visa/mastercard"
-              checked={formData.paymentMethod === "visa/mastercard"}
-              onChange={handleChangeInput}
 
-            />
-          </div>
-          <div className='Klarna'>
-            <p>Klarna</p>
-            <input
-              type="radio"
-              name="paymentMethod"
-              id="Klarna"
-              value="Klarna"
-              checked={formData.paymentMethod === "Klarna"}
-              onChange={handleChangeInput}
-            />
-          </div>
-          <div className='PayPal'>
-            <p>PayPal</p>
-            <input
-              type="radio"
-              name="paymentMethod"
-              id="PayPal"
-              value="PayPal"
-              checked={formData.paymentMethod === "PayPal"}
-              onChange={handleChangeInput}
-            />
-          </div>
-          <div className='AmericanExpress'>
-            <p>American Express</p>
-            <input
-              type="radio"
-              name="paymentMethod"
-              id="AmericanExpress"
-              value="American Express"
-              checked={formData.paymentMethod === "American Express"}
-              onChange={handleChangeInput}
-            />
+
+        <div className='Payment-Methods'>
+          <h4>Payment Methods:</h4>
+          <div className='Payment-Methods-Container'>
+            <div className='visaMastercard'>
+              <img src={visamastercardImage} alt="" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="visaMastercard"
+                value="visa/mastercard"
+                checked={formData.paymentMethod === "visa/mastercard"}
+                onChange={handleChangeInput}
+
+              />
+            </div>
+            <div className='Klarna'>
+              <img src={klarnaImage} alt="" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="Klarna"
+                value="Klarna"
+                checked={formData.paymentMethod === "Klarna"}
+                onChange={handleChangeInput}
+              />
+            </div>
+            <div className='PayPal'>
+              <img src={paypalImage} alt="" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="PayPal"
+                value="PayPal"
+                checked={formData.paymentMethod === "PayPal"}
+                onChange={handleChangeInput}
+              />
+            </div>
+
+            <div className='AmericanExpress'>
+              <img src={americanExpressImage} alt="" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                id="AmericanExpress"
+                value="American Express"
+                checked={formData.paymentMethod === "American Express"}
+                onChange={handleChangeInput}
+              />
+            </div>
           </div>
         </div>
+        <div className='Confirm-Booking-Btn-Container'>
+          <button className="Confirm-Booking-Btn">Confirm Booking</button>
+        </div>
 
-        <button className="Confirm-Booking-Btn">Confirm Booking</button>
       </form>
 
-      <div className="Confirm-Booking-Btn-Container">
 
-      </div>
     </div>
   )
 }

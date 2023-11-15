@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './BookingFormComponent.css'
 
-import { checkIfEmpty } from './Validation';
+// import { checkIfEmpty } from './Validation';
 import { createOrder } from '../../../features/order/orderSlice';
 // import { setRentalObjectId } from '../../../features/rentalObject/rentalObjectSlice'
 
@@ -24,7 +24,6 @@ const BookingFormLoggedInComponent = ( {userData} ) => {
   const navigate = useNavigate()
 
   const RentalObjectId = localStorage.getItem('Rentalobject')
-  const token = localStorage.getItem('user-token')
   const checkIn = localStorage.getItem('checkIn')
   const checkOut = localStorage.getItem('checkOut')
   // const totalPrice = localStorage.getItem('totalPrice')
@@ -94,7 +93,7 @@ const BookingFormLoggedInComponent = ( {userData} ) => {
       rentalObject: RentalObjectId,
       bookingDateArrival: checkIn ?? new Date().toISOString(), // Provide a default value if null
       bookingDateDeparture: checkOut ?? new Date().toISOString(), // Provide a default value if null
-      price: priceValue,
+      price: totalPriceWithProtection,
       email: userData.email,
       phoneNumber: userData.mobile,
       // streetAddress: userData.streetAddress,
@@ -106,7 +105,7 @@ const BookingFormLoggedInComponent = ( {userData} ) => {
     };
     console.log(orderData)
 
-    const resultAction = await dispatch(createOrder(orderData));
+    const resultAction = await dispatch(createOrder(orderData)as any);
 
     if (createOrder.fulfilled.match(resultAction)) {
       if (resultAction.payload && 'order' in resultAction.payload && '_id' in resultAction.payload.order) {
